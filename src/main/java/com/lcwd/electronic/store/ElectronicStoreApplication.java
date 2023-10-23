@@ -53,12 +53,23 @@ public class ElectronicStoreApplication implements CommandLineRunner {
 			roleRepository.save(roleAdmin);
 			roleRepository.save(roleNormal);
 
+			User user = null;
+
+			 user = userRepository.findByEmail("pravarjain1@gmail.com").orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+
+
 
 
 		}
 		catch (Exception e){
 
-
+		User	user = User.builder().email("pravarjain1@gmail.com")
+					.name("pravar").userId(UUID.randomUUID().toString()).about("admin").password(passwordEncoder.encode("admin")).gender("male").build();
+			Set<Role> roles = new HashSet<>();
+			roles.add(roleRepository.findById("admin_fhashuhwutrhbvaytrw").get());
+			user.setRoles(roles);
+			userRepository.save(user);
 
 		}
 	}
