@@ -6,6 +6,10 @@ import com.lcwd.electronic.store.dtos.PageResponse;
 import com.lcwd.electronic.store.dtos.UserDto;
 import com.lcwd.electronic.store.services.FileService;
 import com.lcwd.electronic.store.services.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +31,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Api(description = "This is used to perform user related operations")
 public class UserController {
 
     @Value("${user.profile.image.path}")
@@ -73,6 +78,11 @@ public class UserController {
 
     }
 
+    @ApiOperation(value = "Get all user " , tags = "User api")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200 , message = "Success"),
+            @ApiResponse(code = 400 , message = "Not authorized")
+    })
     @GetMapping
     public  ResponseEntity<PageResponse<UserDto>> getAllUser(
             @RequestParam(required = false , value = "pageSize", defaultValue = "10") int pageSize ,
