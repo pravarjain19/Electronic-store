@@ -14,7 +14,7 @@
 	<name>ElectronicStore</name>
 	<description>Backend for electronic store</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
