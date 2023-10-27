@@ -102,6 +102,7 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/users")
                 .permitAll()
+                .antMatchers(HttpMethod.GET , "/*").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
                 .antMatchers(PUBLIC_URLS)
                 .permitAll()

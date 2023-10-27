@@ -31,10 +31,10 @@ public class UserDto {
     @NotBlank(message = "Password is requried")
     private String password;
 
-    @NotBlank(message = "Tell somtheing about yourself")
+
     private String about;
 
-    @ImageNameValid(message = "Image is not valid")
+
     private String imageName;
     @Size(min = 4 , max = 6 , message = "Invalid gender")
     private String gender;
